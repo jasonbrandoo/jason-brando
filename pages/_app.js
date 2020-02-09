@@ -1,7 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
+import Router from 'next/router';
 import { ThemeProvider } from 'theme-ui';
 import theme from '../theme';
+import * as gtag from '../lib/gtag';
+
+Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
 
 function MyApp({ Component, pageProps }) {
   return (
